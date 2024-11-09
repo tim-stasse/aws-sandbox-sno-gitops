@@ -78,3 +78,11 @@ applications:
     source:
       repoURL: https://github.com/tim-stasse/gitops-catalog
       path: openshift-cert-manager-operator/operator/overlays/stable-v1
+
+  cert-manager-config:
+    annotations:
+      argocd.argoproj.io/sync-wave: "6"
+    destination:
+      namespace: cert-manager
+    source:
+      path: cert-manager-config/overlays/default

@@ -3,13 +3,28 @@ default:
     enabled: true
     enableAutoSync: true
     autoSyncPrune: true
-    project: default
+    project: cluster-config
     destination:
       namespace: openshift-gitops
       server: https://kubernetes.default.svc
     source:
       repoURL: https://github.com/tim-stasse/aws-sandbox-sno-gitops
       targetRevision: HEAD
+
+projects:
+  cluster-config:
+    description: Project for overall cluster configuration
+    namespace: openshift-gitops
+    sourceRepos:
+      - https://github.com/tim-stasse/aws-sandbox-sno-gitops
+      - https://github.com/tim-stasse/gitops-catalog
+    destinations: |
+      - namespace: '*'
+        server: https://kubernetes.default.svc
+    extraFields: |
+      clusterResourceWhitelist:
+      - group: '*'
+        kind: '*'
 
 applications:
   ack-system:

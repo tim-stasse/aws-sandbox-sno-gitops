@@ -35,6 +35,15 @@ applications:
     source:
       path: ack-system/overlays/default
 
+  patch-operator:
+    annotations:
+      argocd.argoproj.io/sync-wave: "1"
+    destination:
+      namespace: patch-operator
+    source:
+      repoURL: https://github.com/tim-stasse/gitops-catalog
+      path: patch-operator/operator/overlays/alpha
+
   external-secrets-operator:
     annotations:
       argocd.argoproj.io/sync-wave: "2"

@@ -1,0 +1,31 @@
+default:
+  app:
+    enabled: true
+    enableAutoSync: true
+    autoSyncPrune: true
+    project: default
+    destination:
+      namespace: openshift-gitops
+      server: https://kubernetes.default.svc
+    source:
+      repoURL: https://github.com/tim-stasse/aws-sandbox-sno-gitops
+      targetRevision: HEAD
+
+applications:
+  external-secrets-operator:
+    annotations:
+      argocd.argoproj.io/sync-wave: "1"
+    destination:
+      namespace: openshift-operators
+    source:
+      repoURL: https://github.com/tim-stasse/gitops-catalog
+      path: external-secrets-operator/operator/overlays/stable
+
+  external-secrets-instance:
+    annotations:
+      argocd.argoproj.io/sync-wave: "2"
+    destination:
+      namespace: external-secrets
+    source:
+      repoURL: https://github.com/tim-stasse/gitops-catalog
+      path: external-secrets-operator/instance/overlays/default

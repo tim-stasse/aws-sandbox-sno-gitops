@@ -37,3 +37,11 @@ applications:
     source:
       repoURL: https://github.com/tim-stasse/gitops-catalog
       path: external-secrets-operator/instance/overlays/default
+
+  external-secrets-config:
+    annotations:
+      argocd.argoproj.io/sync-wave: "4"
+    destination:
+      namespace: external-secrets
+    source:
+      path: external-secrets-config/overlays/default

@@ -86,3 +86,10 @@ applications:
       namespace: cert-manager
     source:
       path: cert-manager-config/overlays/default
+    extraFields: |
+      ignoreDifferences:
+        - group: cert-manager.io
+          kind: ClusterIssuer
+          jsonPointers:
+            - /spec/acme/solvers/0/dns01/route53/region
+            - /spec/acme/solvers/0/dns01/route53/hostedZoneID

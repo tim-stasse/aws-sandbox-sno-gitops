@@ -12,9 +12,17 @@ default:
       targetRevision: HEAD
 
 applications:
-  external-secrets-operator:
+  ack-system:
     annotations:
       argocd.argoproj.io/sync-wave: "1"
+    destination:
+      namespace: ack-system
+    source:
+      path: ack-system/overlays/default
+
+  external-secrets-operator:
+    annotations:
+      argocd.argoproj.io/sync-wave: "2"
     destination:
       namespace: openshift-operators
     source:
@@ -23,7 +31,7 @@ applications:
 
   external-secrets-instance:
     annotations:
-      argocd.argoproj.io/sync-wave: "2"
+      argocd.argoproj.io/sync-wave: "3"
     destination:
       namespace: external-secrets
     source:

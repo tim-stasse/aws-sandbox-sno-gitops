@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - github.com/tim-stasse/gitops-catalog/openshift-gitops-operator/instance/overlays/default?ref=main
+  - root-application.yaml
 
 components:
   - github.com/tim-stasse/gitops-catalog/openshift-gitops-operator/instance/components/application-controller-cluster-admin?ref=main

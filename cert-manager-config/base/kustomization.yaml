@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - namespace.yaml
+  - cert-manager.yaml
   - credentials-request.yaml
   - letsencrypt-staging.yaml
   - patches-rbac.yaml

@@ -1,0 +1,19 @@
+apiVersion: config.openshift.io/v1
+kind: APIServer
+metadata:
+  name: cluster
+  annotations:
+    argocd.argoproj.io/sync-options: ServerSideApply=true
+    redhat-cop.redhat.io/patch: |
+      spec:
+        servingCerts:
+          namedCertificates:
+            - names:
+                - api.{{ (lookup "v1" "DNS" "openshift-config" "cluster").spec.baseDomain }}
+spec:
+  servingCerts:
+    namedCertificates:
+      - names:
+          - << name >>
+        servingCertificate:
+          name: cluster-api-certs-tls

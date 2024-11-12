@@ -106,3 +106,11 @@ applications:
           kind: ClusterIssuer
           jqPathExpressions:
             - .spec.acme.solvers[].dns01.route53 | (.region, .hostedZoneID)
+
+  openshift-config:
+    annotations:
+      argocd.argoproj.io/sync-wave: "6"
+    destination:
+      namespace: openshift-config
+    source:
+      path: openshift-config/overlays/default

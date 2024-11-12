@@ -44,9 +44,17 @@ applications:
       repoURL: https://github.com/tim-stasse/gitops-catalog
       path: patch-operator/operator/overlays/alpha
 
-  external-secrets-operator:
+  patch-operator-config:
     annotations:
       argocd.argoproj.io/sync-wave: "2"
+    destination:
+      namespace: patch-operator
+    source:
+      path: patch-operator-config/overlays/default
+
+  external-secrets-operator:
+    annotations:
+      argocd.argoproj.io/sync-wave: "3"
     destination:
       namespace: openshift-operators
     source:
@@ -55,7 +63,7 @@ applications:
 
   external-secrets-instance:
     annotations:
-      argocd.argoproj.io/sync-wave: "3"
+      argocd.argoproj.io/sync-wave: "4"
     destination:
       namespace: external-secrets
     source:

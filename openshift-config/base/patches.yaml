@@ -37,3 +37,19 @@ spec:
           dnsNames:
             - '*.apps.{{ (index . 1).spec.baseDomain }}'
       patchType: application/merge-patch+json
+    cluster-api-server:
+      targetObjectRef:
+        apiVersion: config.openshift.io/v1
+        kind: APIServer
+        name: cluster
+      sourceObjectRefs:
+        - apiVersion: config.openshift.io/v1
+          kind: DNS
+          name: cluster
+      patchTemplate: |
+        spec:
+          servingCerts:
+            namedCertificates:
+              - names:
+                - api.{{ (index . 1).spec.baseDomain }}
+      patchType: application/merge-patch+json

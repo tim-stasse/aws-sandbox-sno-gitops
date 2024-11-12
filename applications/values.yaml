@@ -114,3 +114,9 @@ applications:
       namespace: openshift-config
     source:
       path: openshift-config/overlays/default
+    extraFields: |
+      ignoreDifferences:
+        - group: cert-manager.io
+          kind: Certificate
+          jqPathExpressions:
+            - .spec | (.commonName, .dnsNames[])

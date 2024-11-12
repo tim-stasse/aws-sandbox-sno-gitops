@@ -1,0 +1,39 @@
+apiVersion: redhatcop.redhat.io/v1alpha1
+kind: Patch
+metadata:
+  name: openshift-config-patches
+  namespace: openshift-config
+spec:
+  serviceAccountRef:
+    name: default
+  patches:
+    cluster-ingress-certs:
+      targetObjectRef:
+        apiVersion: cert-manager.io/v1
+        kind: Certificate
+        name: cluster-ingress-certs
+      sourceObjectRefs:
+        - apiVersion: config.openshift.io/v1
+          kind: DNS
+          name: cluster
+      patchTemplate: |
+        spec:
+          commonName: '*.apps.{{ (index . 1).spec.baseDomain }}'
+          dnsNames:
+            - '*.apps.{{ (index . 1).spec.baseDomain }}'
+      patchType: application/merge-patch+json
+    cluster-api-certs:
+      targetObjectRef:
+        apiVersion: cert-manager.io/v1
+        kind: Certificate
+        name: cluster-api-certs
+      sourceObjectRefs:
+        - apiVersion: config.openshift.io/v1
+          kind: DNS
+          name: cluster
+      patchTemplate: |
+        spec:
+          commonName: '*.apps.{{ (index . 1).spec.baseDomain }}'
+          dnsNames:
+            - '*.apps.{{ (index . 1).spec.baseDomain }}'
+      patchType: application/merge-patch+json

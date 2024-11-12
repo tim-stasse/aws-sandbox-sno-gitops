@@ -51,6 +51,12 @@ applications:
       namespace: patch-operator
     source:
       path: patch-operator-config/overlays/default
+    extraFields: |
+      ignoreDifferences:
+        - group: admissionregistration.k8s.io/v1
+          kind: MutatingWebhookConfiguration
+          jqPathExpressions:
+            - .webhooks[].clientConfig.caBundle
 
   external-secrets-operator:
     annotations:

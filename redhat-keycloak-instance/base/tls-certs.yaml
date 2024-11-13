@@ -3,3 +3,6 @@ kind: Secret
 metadata:
   name: tls-certs
 type: kubernetes.io/tls
+data:
+  tls.crt: << cert >>
+  tls.key: << key >>

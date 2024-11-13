@@ -5,6 +5,6 @@ resources:
   - keycloak-db-credentials.yaml
   - tls-certs.yaml
   - patches-rbac.yaml
-  - keycloak-patches.yaml
+  - patches.yaml
   - postgres.yaml
   - keycloak.yaml

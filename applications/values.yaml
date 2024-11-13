@@ -146,6 +146,10 @@ applications:
           name: tls-certs
           jqPathExpressions:
             - .data
+        - group: k8s.keycloak.org
+          kind: Keycloak
+          jqPathExpressions:
+            - .spec.hostname
 
   openshift-config:
     annotations:

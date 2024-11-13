@@ -93,6 +93,15 @@ applications:
       repoURL: https://github.com/tim-stasse/gitops-catalog
       path: openshift-cert-manager-operator/operator/overlays/stable-v1
 
+  redhat-keycloak-operator:
+    annotations:
+      argocd.argoproj.io/sync-wave: "5"
+    destination:
+      namespace: keycloak
+    source:
+      repoURL: https://github.com/tim-stasse/gitops-catalog
+      path: redhat-keycloak-operator/operator/overlays/stable-v22
+
   cert-manager-config:
     annotations:
       argocd.argoproj.io/sync-wave: "6"

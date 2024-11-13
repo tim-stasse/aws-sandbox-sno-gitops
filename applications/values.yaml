@@ -125,6 +125,14 @@ applications:
           jqPathExpressions:
             - .spec.acme.solvers[].dns01.route53 | (.region, .hostedZoneID)
 
+  crossplane-providers:
+    annotations:
+      argocd.argoproj.io/sync-wave: "6"
+    destination:
+      namespace: crossplane-system
+    source:
+      path: crossplane-providers/overlays/default
+
   openshift-config:
     annotations:
       argocd.argoproj.io/sync-wave: "6"

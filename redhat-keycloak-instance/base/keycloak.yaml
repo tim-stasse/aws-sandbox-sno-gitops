@@ -15,5 +15,5 @@ spec:
       key: password
   http:
     tlsSecret: tls-certs
-  ingress:
-    className: openshift-default
+  hostname:
+    hostname: << hostname >>

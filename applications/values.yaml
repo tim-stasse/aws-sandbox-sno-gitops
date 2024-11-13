@@ -133,6 +133,14 @@ applications:
     source:
       path: crossplane-providers/overlays/default
 
+  redhat-keycloak-instance:
+    annotations:
+      argocd.argoproj.io/sync-wave: "6"
+    destination:
+      namespace: keycloak
+    source:
+      path: redhat-keycloak-instance/overlays/default
+
   openshift-config:
     annotations:
       argocd.argoproj.io/sync-wave: "6"

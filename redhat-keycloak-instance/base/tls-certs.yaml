@@ -4,5 +4,5 @@ metadata:
   name: tls-certs
 type: kubernetes.io/tls
 data:
-  tls.crt: << cert >>
-  tls.key: << key >>
+  tls.crt: PDwgY2VydCA+Pgo=
+  tls.key: PDwga2V5ID4+Cg==

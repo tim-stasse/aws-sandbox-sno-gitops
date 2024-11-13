@@ -123,4 +123,4 @@ applications:
         - group: config.openshift.io
           kind: APIServer
           jqPathExpressions:
-            - .spec.servingCerts.namedCertificates[].names[]
+            - .spec.servingCerts.namedCertificates[]

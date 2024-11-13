@@ -52,4 +52,6 @@ spec:
             namedCertificates:
               - names:
                 - api.{{ (index . 1).spec.baseDomain }}
+                servingCertificate:
+                  name: cluster-api-certs-tls
       patchType: application/merge-patch+json

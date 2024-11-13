@@ -18,11 +18,11 @@ spec:
           cert: {{ (index (index . 0).data "tls.crt") }}
           key: {{ (index (index . 0).data "tls.key") }}
       patchType: application/merge-patch+json
-    letsencrypt-staging:
+    letsencrypt-issuer:
       targetObjectRef:
         apiVersion: cert-manager.io/v1
         kind: ClusterIssuer
-        name: letsencrypt-staging
+        name: letsencrypt-issuer
       sourceObjectRefs:
         - apiVersion: config.openshift.io/v1
           kind: DNS

@@ -120,3 +120,7 @@ applications:
           kind: Certificate
           jqPathExpressions:
             - .spec | (.commonName, .dnsNames[])
+        - group: config.openshift.io/v1
+          kind: APIServer
+          jqPathExpressions:
+            - .spec.servingCerts.namedCertificates[].names[]

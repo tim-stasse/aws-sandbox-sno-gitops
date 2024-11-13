@@ -93,6 +93,15 @@ applications:
       repoURL: https://github.com/tim-stasse/gitops-catalog
       path: openshift-cert-manager-operator/operator/overlays/stable-v1
 
+  crossplane-system:
+    annotations:
+      argocd.argoproj.io/sync-wave: "5"
+    destination:
+      namespace: crossplane-system
+    source:
+      repoURL: https://github.com/tim-stasse/gitops-catalog
+      path: crossplane-system/overlays/stable
+
   redhat-keycloak-operator:
     annotations:
       argocd.argoproj.io/sync-wave: "5"

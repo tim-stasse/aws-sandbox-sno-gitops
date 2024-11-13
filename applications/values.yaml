@@ -140,6 +140,12 @@ applications:
       namespace: keycloak
     source:
       path: redhat-keycloak-instance/overlays/default
+    extraFields: |
+      ignoreDifferences:
+        - kind: Secret
+          name: tls-certs
+          jqPathExpressions:
+            - .data
 
   openshift-config:
     annotations:

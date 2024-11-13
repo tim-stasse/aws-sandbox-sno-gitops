@@ -3,4 +3,4 @@ kind: Kustomization
 
 resources:
   - credentials-request.yaml
-  - secret-store.yaml
+  - cluster-secret-store.yaml

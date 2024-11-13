@@ -14,6 +14,6 @@ spec:
       name: keycloak-db-credentials
       key: password
   http:
-    tlsSecret: cluster-ingress-certs-tls
+    tlsSecret: tls-certs
   ingress:
     className: openshift-default

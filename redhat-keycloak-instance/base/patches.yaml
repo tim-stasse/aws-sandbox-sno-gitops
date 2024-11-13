@@ -1,0 +1,23 @@
+apiVersion: redhatcop.redhat.io/v1alpha1
+kind: Patch
+metadata:
+  name: keycloak-patches
+spec:
+  serviceAccountRef:
+    name: default
+  patches:
+    tls-certs:
+      targetObjectRef:
+        apiVersion: v1
+        kind: Secret
+        name: tls-certs
+      sourceObjectRefs:
+        - apiVersion: v1
+          kind: Secret
+          name: cluster-ingress-certs-tls
+          namespace: openshift-ingress
+      patchTemplate: |
+        data:
+          cert: {{ (index (index . 1).data "tls.crt") }}
+          key: {{ (index (index . 1).data "tls.key") }}
+      patchType: application/merge-patch+json

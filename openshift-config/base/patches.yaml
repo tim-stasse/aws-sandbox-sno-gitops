@@ -33,9 +33,9 @@ spec:
           name: cluster
       patchTemplate: |
         spec:
-          commonName: '*.apps.{{ (index . 1).spec.baseDomain }}'
+          commonName: 'api.{{ (index . 1).spec.baseDomain }}'
           dnsNames:
-            - '*.apps.{{ (index . 1).spec.baseDomain }}'
+            - 'api.{{ (index . 1).spec.baseDomain }}'
       patchType: application/merge-patch+json
     cluster-api-server:
       targetObjectRef:

@@ -182,3 +182,17 @@ applications:
           name: keycloak-credentials
           jqPathExpressions:
             - .data
+
+  redhat-keycloak-config:
+    annotations:
+      argocd.argoproj.io/sync-wave: "8"
+    destination:
+      namespace: crossplane-system
+    source:
+      path: redhat-keycloak-config/overlays/default
+    extraFields: |
+      ignoreDifferences:
+        - kind: ConsoleLink
+          name: keycloak
+          jqPathExpressions:
+            - .spec.href

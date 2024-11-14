@@ -1,7 +1,7 @@
 apiVersion: redhatcop.redhat.io/v1alpha1
 kind: Patch
 metadata:
-  name: keycloak-patches
+  name: keycloak-instance-patches
 spec:
   serviceAccountRef:
     name: default

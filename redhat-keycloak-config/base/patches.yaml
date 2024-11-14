@@ -1,0 +1,21 @@
+apiVersion: redhatcop.redhat.io/v1alpha1
+kind: Patch
+metadata:
+  name: keycloak-config-patches
+spec:
+  serviceAccountRef:
+    name: default
+  patches:
+    console-link:
+      targetObjectRef:
+        apiVersion: console.openshift.io/v1
+        kind: ConsoleLink
+        name: keycloak
+      sourceObjectRefs:
+        - apiVersion: k8s.keycloak.org/v2alpha1
+          kind: Keycloak
+          name: keycloak
+      patchTemplate: |
+        spec:
+          href: {{ (index . 1).spec.hostname.hostname }}
+      patchType: application/merge-patch+json

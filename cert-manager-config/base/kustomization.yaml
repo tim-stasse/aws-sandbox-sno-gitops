@@ -5,6 +5,7 @@ resources:
   - namespace.yaml
   - cert-manager.yaml
   - credentials-request.yaml
-  - letsencrypt-issuer.yaml
+  - letsencrypt-staging.yaml
+  - letsencrypt-production.yaml
   - patches-rbac.yaml
   - patches.yaml

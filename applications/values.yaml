@@ -109,7 +109,7 @@ applications:
       namespace: keycloak
     source:
       repoURL: https://github.com/tim-stasse/gitops-catalog
-      path: redhat-keycloak/operator/overlays/stable-v22
+      path: redhat-keycloak/operator/overlays/stable-v24
 
   cert-manager-config:
     annotations:

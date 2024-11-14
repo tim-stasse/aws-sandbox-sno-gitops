@@ -142,10 +142,10 @@ applications:
       path: redhat-keycloak-instance/overlays/default
     extraFields: |
       ignoreDifferences:
-        - kind: Secret
-          name: tls-certs
+        - group: cert-manager.io
+          kind: Certificate
           jqPathExpressions:
-            - .data
+            - .spec | (.commonName, .dnsNames[])
         - group: k8s.keycloak.org
           kind: Keycloak
           jqPathExpressions:

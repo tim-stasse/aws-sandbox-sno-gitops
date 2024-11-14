@@ -11,6 +11,7 @@ spec:
         apiVersion: console.openshift.io/v1
         kind: ConsoleLink
         name: keycloak-link
+        namespace: keycloak
       sourceObjectRefs:
         - apiVersion: k8s.keycloak.org/v2alpha1
           kind: Keycloak

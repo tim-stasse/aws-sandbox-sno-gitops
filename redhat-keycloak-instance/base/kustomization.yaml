@@ -3,7 +3,7 @@ kind: Kustomization
 
 resources:
   - keycloak-db-credentials.yaml
-  - tls-certs.yaml
+  - keycloak-certificate.yaml
   - patches-rbac.yaml
   - patches.yaml
   - postgres.yaml

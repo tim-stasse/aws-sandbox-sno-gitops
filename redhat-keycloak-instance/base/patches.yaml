@@ -6,18 +6,18 @@ spec:
   serviceAccountRef:
     name: default
   patches:
-    tls-certs:
+    keycloak-certs:
       targetObjectRef:
-        apiVersion: v1
-        kind: Secret
-        name: tls-certs
+        apiVersion: cert-manager.io/v1
+        kind: Certificate
+        name: keycloak-certs
       sourceObjectRefs:
-        - apiVersion: v1
-          kind: Secret
-          name: cluster-ingress-certs-tls
-          namespace: openshift-ingress
+        - apiVersion: config.openshift.io/v1
+          kind: DNS
+          name: cluster
       patchTemplate: |
-        data:
-          tls.crt: {{ (index (index . 1).data "tls.crt") }}
-          tls.key: {{ (index (index . 1).data "tls.key") }}
+        spec:
+          commonName: 'keycloak-ingress-keycloak.{{ (index . 1).spec.baseDomain }}'
+          dnsNames:
+            - 'keycloak-ingress-keycloak.{{ (index . 1).spec.baseDomain }}'
       patchType: application/merge-patch+json

@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: Secret
-metadata:
-  name: tls-certs
-type: kubernetes.io/tls
-data:
-  tls.crt: PDwgY2VydCA+Pgo=
-  tls.key: PDwga2V5ID4+Cg==

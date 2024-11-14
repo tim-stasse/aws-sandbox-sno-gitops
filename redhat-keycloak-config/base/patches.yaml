@@ -10,7 +10,7 @@ spec:
       targetObjectRef:
         apiVersion: console.openshift.io/v1
         kind: ConsoleLink
-        name: keycloak
+        name: keycloak-link
       sourceObjectRefs:
         - apiVersion: k8s.keycloak.org/v2alpha1
           kind: Keycloak

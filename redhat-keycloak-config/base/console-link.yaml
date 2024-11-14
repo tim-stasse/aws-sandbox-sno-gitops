@@ -1,7 +1,7 @@
 apiVersion: console.openshift.io/v1
 kind: ConsoleLink
 metadata:
-  name: keycloak
+  name: keycloak-link
   namespace: keycloak
 spec:
   applicationMenu:

@@ -17,3 +17,5 @@ spec:
     tlsSecret: tls-certs
   hostname:
     hostname: << hostname >>
+  ingress:
+    className: openshift-default

@@ -17,7 +17,7 @@ spec:
           name: cluster
       patchTemplate: |
         spec:
-          commonName: 'keycloak-ingress-keycloak.{{ (index . 1).spec.baseDomain }}'
+          commonName: 'keycloak-ingress-keycloak.apps.{{ (index . 1).spec.baseDomain }}'
           dnsNames:
-            - 'keycloak-ingress-keycloak.{{ (index . 1).spec.baseDomain }}'
+            - 'keycloak-ingress-keycloak.apps.{{ (index . 1).spec.baseDomain }}'
       patchType: application/merge-patch+json

@@ -17,7 +17,21 @@ spec:
           name: cluster
       patchTemplate: |
         spec:
-          commonName: 'keycloak-ingress-keycloak.apps.{{ (index . 1).spec.baseDomain }}'
+          commonName: 'keycloak.apps.{{ (index . 1).spec.baseDomain }}'
           dnsNames:
-            - 'keycloak-ingress-keycloak.apps.{{ (index . 1).spec.baseDomain }}'
+            - 'keycloak.apps.{{ (index . 1).spec.baseDomain }}'
+      patchType: application/merge-patch+json
+    keycloak-hostname:
+      targetObjectRef:
+        apiVersion: k8s.keycloak.org/v2alpha1
+        kind: Keycloak
+        name: keycloak
+      sourceObjectRefs:
+        - apiVersion: config.openshift.io/v1
+          kind: DNS
+          name: cluster
+      patchTemplate: |
+        spec:
+          hostname:
+            hostname: keycloak.apps.{{ (index . 1).spec.baseDomain }}
       patchType: application/merge-patch+json

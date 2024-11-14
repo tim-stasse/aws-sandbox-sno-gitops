@@ -168,3 +168,17 @@ applications:
           kind: APIServer
           jqPathExpressions:
             - .spec.servingCerts.namedCertificates[]
+
+  crossplane-provider-config:
+    annotations:
+      argocd.argoproj.io/sync-wave: "7"
+    destination:
+      namespace: crossplane-system
+    source:
+      path: crossplane-provider-config/overlays/default
+    extraFields: |
+      ignoreDifferences:
+        - kind: Secret
+          name: keycloak-credentials
+          jqPathExpressions:
+            - .data

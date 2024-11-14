@@ -1,0 +1,32 @@
+apiVersion: redhatcop.redhat.io/v1alpha1
+kind: Patch
+metadata:
+  name: keycloak-provider-patches
+spec:
+  serviceAccountRef:
+    name: default
+  patches:
+    keycloak-credentials:
+      targetObjectRef:
+        apiVersion: v1
+        kind: Secret
+        namespace: crossplane-system
+        name: keycloak-credentials
+      sourceObjectRefs:
+        - apiVersion: v1
+          kind: Secret
+          namespace: keycloak
+          name: keycloak-initial-admin
+        - apiVersion: k8s.keycloak.org/v2alpha1
+          kind: Keycloak
+          namespace: keycloak
+          name: keycloak
+      patchTemplate: |
+        data:
+          client_id: {{ "admin-cli" | b64enc }}
+          username: {{ (index . 1).data.username }}
+          password: {{ (index . 1).data.password }}
+          url: {{ printf "https://%s" (index . 2).spec.hostname.hostname | b64enc }}
+          base_path: {{ "/auth" | b64enc }}
+          realm: {{ "master" | b64enc }}
+      patchType: application/merge-patch+json

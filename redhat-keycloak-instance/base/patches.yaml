@@ -6,20 +6,6 @@ spec:
   serviceAccountRef:
     name: default
   patches:
-    keycloak-hostname:
-      targetObjectRef:
-        apiVersion: k8s.keycloak.org/v2alpha1
-        kind: Keycloak
-        name: keycloak
-      sourceObjectRefs:
-        - apiVersion: config.openshift.io/v1
-          kind: DNS
-          name: cluster
-      patchTemplate: |
-        spec:
-          hostname:
-            hostname: keycloak.apps.{{ (index . 1).spec.baseDomain }}
-      patchType: application/merge-patch+json
     tls-certs:
       targetObjectRef:
         apiVersion: v1

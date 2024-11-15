@@ -192,7 +192,8 @@ applications:
       path: redhat-keycloak-config/overlays/default
     extraFields: |
       ignoreDifferences:
-        - kind: ConsoleLink
+        - group: console.openshift.io
+          kind: ConsoleLink
           name: keycloak-link
           jqPathExpressions:
             - .spec.href

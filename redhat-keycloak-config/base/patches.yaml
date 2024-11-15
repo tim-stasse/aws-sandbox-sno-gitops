@@ -15,6 +15,7 @@ spec:
         - apiVersion: k8s.keycloak.org/v2alpha1
           kind: Keycloak
           name: keycloak
+          namespace: keycloak
       patchTemplate: |
         spec:
           href: {{ (index . 1).spec.hostname.hostname }}

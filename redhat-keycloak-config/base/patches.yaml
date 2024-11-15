@@ -18,5 +18,5 @@ spec:
           namespace: keycloak
       patchTemplate: |
         spec:
-          href: {{ (index . 1).spec.hostname.hostname }}
+          href: https://{{ (index . 1).spec.hostname.hostname }}
       patchType: application/merge-patch+json

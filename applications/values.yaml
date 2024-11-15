@@ -193,6 +193,6 @@ applications:
     extraFields: |
       ignoreDifferences:
         - kind: ConsoleLink
-          name: keycloak
+          name: keycloak-link
           jqPathExpressions:
             - .spec.href

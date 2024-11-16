@@ -95,7 +95,7 @@ spec:
                 clientSecret:
                   name: oidc-client-secret
                 extraScopes: []
-                issuer: https://{{ (index . 1).spec.hostname.hostname }}/auth/realms/{{ (index . 1).spec.forProvider.realm }}
+                issuer: https://{{ (index . 1).spec.hostname.hostname }}/auth/realms/{{ (index . 2).spec.forProvider.realm }}
                 claims:
                   preferredUsername:
                     - preferred_username

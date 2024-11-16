@@ -1,11 +1,11 @@
 apiVersion: openidclient.keycloak.crossplane.io/v1alpha1
 kind: Client
 metadata:
-  name: ocp-client
+  name: ocp-oauth-client
 spec:
   forProvider:
-    clientId: ocp-client
-    name: ${client_ocp-client}
+    clientId: ocp-oauth
+    name: ${client_ocp-oauth}
     realmId: vagabond-studios
     rootUrl: https://oauth-openshift.apps.${CLUSTER_BASE_DOMAIN}/oauth2callback
     validRedirectUris:
@@ -20,7 +20,7 @@ spec:
 apiVersion: openidclient.keycloak.crossplane.io/v1alpha1
 kind: ClientDefaultScopes
 metadata:
-  name: ocp-client-default-scopes
+  name: ocp-oauth-client-default-scopes
 spec:
   forProvider:
     clientId: ocp-client

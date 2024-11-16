@@ -26,9 +26,7 @@ spec:
         {{ $username := (index . 1).data.username | b64dec }}
         {{ $password := (index . 1).data.password | b64dec }}
         {{ $url := printf "https://%s" (index . 2).spec.hostname.hostname }}
-        {{ $base_path := "/auth" }}
-        {{ $realm := "master" }}
-        {{ $value := dict "client_id" $client_id "username" $username "password" $password "url" $url "base_path" $base_path "realm" $realm }}
+        {{ $value := dict "client_id" $client_id "username" $username "password" $password "url" $url }}
         data:
           credentials: {{ $value | toJson | b64enc }}
       patchType: application/merge-patch+json

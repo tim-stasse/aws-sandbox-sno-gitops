@@ -111,6 +111,15 @@ applications:
       repoURL: https://github.com/tim-stasse/gitops-catalog
       path: redhat-keycloak/operator/overlays/stable-v24
 
+  group-sync-operator:
+    annotations:
+      argocd.argoproj.io/sync-wave: "5"
+    destination:
+      namespace: group-sync-operator
+    source:
+      repoURL: https://github.com/tim-stasse/gitops-catalog
+      path: group-sync-operator/overlays/alpha
+
   cert-manager-config:
     annotations:
       argocd.argoproj.io/sync-wave: "6"

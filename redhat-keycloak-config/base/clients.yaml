@@ -16,6 +16,8 @@ spec:
     directAccessGrantsEnabled: true
     implicitFlowEnabled: false
     consentRequired: false
+  publishConnectionDetailsTo:
+    name: oauth-secret
 ---
 apiVersion: openidclient.keycloak.crossplane.io/v1alpha1
 kind: ClientDefaultScopes

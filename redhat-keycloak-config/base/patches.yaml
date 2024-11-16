@@ -20,3 +20,18 @@ spec:
         spec:
           href: https://{{ (index . 1).spec.hostname.hostname }}
       patchType: application/merge-patch+json
+    ocp-client:
+      targetObjectRef:
+        apiVersion: openidclient.keycloak.crossplane.io/v1alpha1
+        kind: Client
+        name: ocp-client
+        namespace: keycloak
+      sourceObjectRefs:
+        - apiVersion: config.openshift.io/v1
+          kind: DNS
+          name: cluster
+      patchTemplate: |
+        spec:
+          forProvider:
+            rootUrl: https://oauth-openshift.apps.{{ (index . 1).spec.baseDomain }}/oauth2callback
+      patchType: application/merge-patch+json

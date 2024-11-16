@@ -197,3 +197,7 @@ applications:
           name: keycloak-link
           jqPathExpressions:
             - .spec.href
+        - group: openidclient.keycloak.crossplane.io
+          kind: Client
+          jqPathExpressions:
+            - .spec.forProvider.rootUrl

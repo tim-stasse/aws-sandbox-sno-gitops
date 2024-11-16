@@ -32,3 +32,17 @@ spec:
     defaultScopes:
       - profile
       - email
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: ocp-oauth-client-secret
+spec:
+  target:
+    name: ocp-oauth
+  dataFrom:
+    - sourceRef:
+        generatorRef:
+          apiVersion: generators.external-secrets.io/v1alpha1
+          kind: Password
+          name: client-secret

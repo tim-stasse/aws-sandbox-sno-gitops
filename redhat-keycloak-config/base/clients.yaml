@@ -15,7 +15,7 @@ spec:
     clientSecretSecretRef:
       namespace: keycloak
       name: ocp-oauth
-      key: client-secret
+      key: clientSecret
     standardFlowEnabled: true
     directAccessGrantsEnabled: true
     implicitFlowEnabled: false
@@ -48,7 +48,7 @@ spec:
     template:
       engineVersion: v2
       data:
-        client-secret: "{{ .password }}"
+        clientSecret: "{{ .password }}"
   dataFrom:
     - sourceRef:
         generatorRef:

@@ -3,4 +3,5 @@ kind: Kustomization
 
 resources:
   - console-link.yaml
+  - keycloak-realm.yaml
   - patches.yaml

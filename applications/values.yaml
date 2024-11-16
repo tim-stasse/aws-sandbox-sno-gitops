@@ -168,6 +168,10 @@ applications:
           kind: APIServer
           jqPathExpressions:
             - .spec.servingCerts.namedCertificates[]
+        - group: config.openshift.io
+          kind: OAuth
+          jqPathExpressions:
+            - .spec.identityProviders
 
   crossplane-provider-config:
     annotations:

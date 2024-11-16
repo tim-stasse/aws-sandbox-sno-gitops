@@ -9,6 +9,7 @@ spec:
     rootUrl: https://oauth-openshift.apps.${CLUSTER_BASE_DOMAIN}/oauth2callback
     validRedirectUris:
       - /oidckeycloak
+    accessType: CONFIDENTIAL
     clientAuthenticatorType: client-secret
     standardFlowEnabled: true
     directAccessGrantsEnabled: true

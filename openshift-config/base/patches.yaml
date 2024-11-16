@@ -55,3 +55,54 @@ spec:
                 servingCertificate:
                   name: cluster-api-certs-tls
       patchType: application/merge-patch+json
+    oidc-client-secret:
+      targetObjectRef:
+        apiVersion: v1
+        kind: Secret
+        name: oidc-client-secret
+        namespace: openshift-config
+      sourceObjectRefs:
+        - apiVersion: v1
+          kind: Secret
+          name: ocp-oauth
+          namespace: keycloak
+      patchTemplate: |
+        spec:
+          clientSecret: {{ (index . 1).data.clientSecret }}
+      patchType: application/merge-patch+json
+    oauth-config:
+      targetObjectRef:
+        apiVersion: config.openshift.io/v1
+        kind: OAuth
+        name: cluster
+      sourceObjectRefs:
+        - apiVersion: k8s.keycloak.org/v2alpha1
+          kind: Keycloak
+          name: keycloak
+          namespace: keycloak
+        - apiVersion: realm.keycloak.crossplane.io/v1alpha1
+          kind: Realm
+          name: vagabond-studios
+          namespace: keycloak
+      patchTemplate: |
+        spec:
+          identityProviders:
+            - name: oidc-keycloak
+              mappingMethod: claim
+              type: OpenID
+              openID:
+                clientID: ocp-oauth
+                clientSecret:
+                  name: oidc-client-secret
+                extraScopes: []
+                issuer: https://{{ (index . 1).spec.hostname.hostname }}/auth/realms/{{ (index . 1).spec.forProvider.realm }}
+                claims:
+                  preferredUsername:
+                    - preferred_username
+                  name:
+                    - name
+                  email:
+                    - email
+                  groups:
+                    - groups
+      patchType: application/merge-patch+json

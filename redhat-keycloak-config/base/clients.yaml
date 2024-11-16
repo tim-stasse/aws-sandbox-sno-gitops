@@ -13,6 +13,7 @@ spec:
     accessType: CONFIDENTIAL
     clientAuthenticatorType: client-secret
     clientSecretSecretRef:
+      namespace: keycloak
       name: ocp-oauth
       key: client-secret
     standardFlowEnabled: true

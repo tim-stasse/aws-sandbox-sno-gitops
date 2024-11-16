@@ -22,11 +22,13 @@ spec:
           namespace: keycloak
           name: keycloak
       patchTemplate: |
+        {{ $client_id := "admin-cli" }}
+        {{ $username := (index . 1).data.username | b64dec }}
+        {{ $password := (index . 1).data.password | b64dec }}
+        {{ $url := printf "https://%s" (index . 2).spec.hostname.hostname }}
+        {{ $base_path := "/auth" }}
+        {{ $realm := "master" }}
+        {{ $value := dict "client_id" $client_id "username" $username "password" $password "url" $url "base_path" $base_path "realm" $realm }}
         data:
-          client_id: {{ "admin-cli" | b64enc }}
-          username: {{ (index . 1).data.username }}
-          password: {{ (index . 1).data.password }}
-          url: {{ printf "https://%s" (index . 2).spec.hostname.hostname | b64enc }}
-          base_path: {{ "/auth" | b64enc }}
-          realm: {{ "master" | b64enc }}
+          credentials: {{ $value | toJson | b64enc }}
       patchType: application/merge-patch+json

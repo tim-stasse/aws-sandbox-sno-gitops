@@ -12,6 +12,9 @@ spec:
       - /oidckeycloak
     accessType: CONFIDENTIAL
     clientAuthenticatorType: client-secret
+    clientSecretSecretRef:
+      name: ocp-oauth
+      key: client-secret
     standardFlowEnabled: true
     directAccessGrantsEnabled: true
     implicitFlowEnabled: false

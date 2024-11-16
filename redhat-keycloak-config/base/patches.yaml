@@ -20,11 +20,11 @@ spec:
         spec:
           href: https://{{ (index . 1).spec.hostname.hostname }}
       patchType: application/merge-patch+json
-    ocp-client:
+    ocp-oauth-client:
       targetObjectRef:
         apiVersion: openidclient.keycloak.crossplane.io/v1alpha1
         kind: Client
-        name: ocp-client
+        name: ocp-oauth-client
         namespace: keycloak
       sourceObjectRefs:
         - apiVersion: config.openshift.io/v1

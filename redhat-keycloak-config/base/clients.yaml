@@ -7,7 +7,7 @@ spec:
     clientId: ocp-oauth
     name: ${client_ocp-oauth}
     realmId: vagabond-studios
-    rootUrl: https://oauth-openshift.apps.${CLUSTER_BASE_DOMAIN}/oauth2callback
+    rootUrl: https://oauth-openshift.apps.<< baseDomain >>/oauth2callback
     validRedirectUris:
       - /oidckeycloak
     accessType: CONFIDENTIAL

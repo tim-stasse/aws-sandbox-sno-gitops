@@ -45,6 +45,10 @@ metadata:
 spec:
   target:
     name: ocp-oauth
+    template:
+      engineVersion: v2
+      data:
+        client-secret: "{{ .password }}"
   dataFrom:
     - sourceRef:
         generatorRef:

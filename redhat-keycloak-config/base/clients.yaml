@@ -33,6 +33,11 @@ spec:
       - profile
       - email
 ---
+apiVersion: generators.external-secrets.io/v1alpha1
+kind: Password
+metadata:
+  name: client-secret
+---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:

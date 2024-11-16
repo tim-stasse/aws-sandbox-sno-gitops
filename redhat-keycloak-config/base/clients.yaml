@@ -5,6 +5,7 @@ metadata:
 spec:
   forProvider:
     clientId: ocp-client
+    name: ${client_ocp-client}
     realmId: vagabond-studios
     rootUrl: https://oauth-openshift.apps.${CLUSTER_BASE_DOMAIN}/oauth2callback
     validRedirectUris:

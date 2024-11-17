@@ -9,7 +9,7 @@ spec:
     realmId: vagabond-studios
     rootUrl: https://oauth-openshift.apps.<< base_domain >>/oauth2callback
     validRedirectUris:
-      - /oidckeycloak
+      - /oidc-keycloak
     accessType: CONFIDENTIAL
     clientAuthenticatorType: client-secret
     clientSecretSecretRef:

@@ -67,7 +67,7 @@ spec:
           name: ocp-oauth
           namespace: keycloak
       patchTemplate: |
-        spec:
+        data:
           clientSecret: {{ (index . 1).data.clientSecret }}
       patchType: application/merge-patch+json
     oauth-config:

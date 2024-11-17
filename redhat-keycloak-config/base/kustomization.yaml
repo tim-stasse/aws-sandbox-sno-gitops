@@ -5,4 +5,5 @@ resources:
   - console-link.yaml
   - keycloak-realm.yaml
   - clients.yaml
+  - groups.yaml
   - patches.yaml

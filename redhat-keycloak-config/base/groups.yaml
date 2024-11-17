@@ -1,0 +1,9 @@
+apiVersion: group.keycloak.crossplane.io/v1alpha1
+kind: Group
+metadata:
+  name: admin-group
+spec:
+  deletionPolicy: Delete
+  forProvider:
+    name: admin
+    realmId: vagabond-studios

@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - console-link.yaml
   - password-generator.yaml
+  - initial-user-passwords.yaml
   - keycloak-realm.yaml
   - clients.yaml
   - groups.yaml

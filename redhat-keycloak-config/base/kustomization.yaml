@@ -9,4 +9,5 @@ resources:
   - clients.yaml
   - groups.yaml
   - users.yaml
+  - rbac.yaml
   - patches.yaml

@@ -5,6 +5,7 @@ commonAnnotations:
   argocd.argoproj.io/compare-options: IgnoreExtraneous
 
 resources:
+  - oidc-client-secret.yaml
   - cluster-ingress-certificate.yaml
   - ingress-controller.yaml
   - cluster-api-certificate.yaml

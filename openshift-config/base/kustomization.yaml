@@ -9,6 +9,6 @@ resources:
   - ingress-controller.yaml
   - cluster-api-certificate.yaml
   - api-server.yaml
-  # - oauth.yaml
+  - oauth.yaml
   - patches-rbac.yaml
   - patches.yaml

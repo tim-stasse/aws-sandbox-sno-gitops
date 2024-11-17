@@ -6,6 +6,10 @@ spec:
   forProvider:
     realmId: vagabond-studios
     username: tim.stasse
+    firstName: Tim
+    lastName: Stasse
+    email: tim.stasse@gmail.com
+    emailVerified: true
     initialPassword:
       - temporary: true
         valueSecretRef:

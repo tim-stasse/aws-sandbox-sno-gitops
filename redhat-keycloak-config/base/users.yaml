@@ -1,0 +1,14 @@
+apiVersion: user.keycloak.crossplane.io/v1alpha1
+kind: User
+metadata:
+  name: tim-stasse
+spec:
+  forProvider:
+    realmId: vagabond-studios
+    username: tim.stasse
+    initialPassword:
+      - temporary: true
+        valueSecretRef:
+          name: tim-stasse-initial-password
+          namespace: keycloak
+          key: password

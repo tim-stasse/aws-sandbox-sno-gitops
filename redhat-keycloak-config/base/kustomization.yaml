@@ -6,4 +6,5 @@ resources:
   - keycloak-realm.yaml
   - clients.yaml
   - groups.yaml
+  - users.yaml
   - patches.yaml

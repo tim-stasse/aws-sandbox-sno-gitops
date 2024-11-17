@@ -41,7 +41,7 @@ spec:
                 loginRealm: master
                 realm: vagabond-studios
                 url: https://{{ (index . 1).spec.hostname.hostname }}
-                prune: false
+                prune: true
                 scope: sub
                 credentialsSecret:
                   kind: Secret

@@ -214,3 +214,17 @@ applications:
           kind: Client
           jqPathExpressions:
             - .spec.forProvider.rootUrl
+
+  group-sync-config:
+    annotations:
+      argocd.argoproj.io/sync-wave: "8"
+    destination:
+      namespace: group-sync-operator
+    source:
+      path: group-sync-config/overlays/default
+    extraFields: |
+      ignoreDifferences:
+        - group: redhatcop.redhat.io
+          kind: GroupSync
+          jqPathExpressions:
+            - .spec.providers

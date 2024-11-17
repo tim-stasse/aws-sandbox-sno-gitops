@@ -16,15 +16,3 @@ spec:
           name: tim-stasse-initial-password
           namespace: keycloak
           key: password
----
-apiVersion: user.keycloak.crossplane.io/v1alpha1
-kind: Groups
-metadata:
-  name: tim-stasse-groups
-spec:
-  forProvider:
-    realmId: vagabond-studios
-    userIdRef:
-      name: tim-stasse
-    groupIdsRefs:
-      - name: admin-group

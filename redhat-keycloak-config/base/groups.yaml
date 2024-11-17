@@ -7,3 +7,15 @@ spec:
   forProvider:
     name: admin
     realmId: vagabond-studios
+---
+apiVersion: group.keycloak.crossplane.io/v1alpha1
+kind: Memberships
+metadata:
+  name: admin-group-memberships
+spec:
+  forProvider:
+    realmId: vagabond-studios
+    groupIdRef:
+      name: admin
+    members:
+      - tim.stasse

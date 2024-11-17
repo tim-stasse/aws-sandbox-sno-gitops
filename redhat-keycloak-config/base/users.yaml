@@ -25,6 +25,6 @@ spec:
   forProvider:
     realmId: vagabond-studios
     userIdRef:
-      name: tim.stasse
+      name: tim-stasse
     groupIdsRefs:
       - name: admin

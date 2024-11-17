@@ -27,4 +27,4 @@ spec:
     userIdRef:
       name: tim-stasse
     groupIdsRefs:
-      - name: admin
+      - name: admin-group

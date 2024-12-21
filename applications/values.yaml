@@ -263,3 +263,12 @@ applications:
     source:
       repoURL: https://github.com/tim-stasse/gitops-catalog
       path: openshift-servicemesh/v3-instance/overlays/default
+
+  rhcl-operator:
+    annotations:
+      argocd.argoproj.io/sync-wave: "10"
+    destination:
+      namespace: openshift-operators
+    source:
+      repoURL: https://github.com/tim-stasse/gitops-catalog
+      path: redhat-connectivity-link/operator/overlays/stable

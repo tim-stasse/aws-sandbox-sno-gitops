@@ -236,4 +236,4 @@ applications:
       namespace: openshift-operators
     source:
       repoURL: https://github.com/tim-stasse/gitops-catalog
-      path: openshift-servicemesh/overlays/tech-preview
+      path: openshift-servicemesh/operator/overlays/tech-preview

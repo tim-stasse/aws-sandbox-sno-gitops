@@ -228,3 +228,12 @@ applications:
           kind: GroupSync
           jqPathExpressions:
             - .spec.providers
+
+  openshift-servicemesh-operator:
+    annotations:
+      argocd.argoproj.io/sync-wave: "8"
+    destination:
+      namespace: openshift-operators
+    source:
+      repoURL: https://github.com/tim-stasse/gitops-catalog
+      path: openshift-servicemesh/overlays/tech-preview

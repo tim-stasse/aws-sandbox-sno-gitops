@@ -238,6 +238,14 @@ applications:
       repoURL: https://github.com/tim-stasse/gitops-catalog
       path: openshift-servicemesh/operator/overlays/tech-preview
 
+  gateway-api:
+    annotations:
+      argocd.argoproj.io/sync-wave: "8"
+    destination:
+      namespace: openshift-gitops
+    source:
+      path: gateway-api/overlays/default
+
   openshift-servicemesh-instance:
     annotations:
       argocd.argoproj.io/sync-wave: "9"

@@ -246,6 +246,15 @@ applications:
     source:
       path: gateway-api/crd/overlays/default
 
+  openshift-servicemesh-cni-instance:
+    annotations:
+      argocd.argoproj.io/sync-wave: "9"
+    destination:
+      namespace: istio-cni
+    source:
+      repoURL: https://github.com/tim-stasse/gitops-catalog
+      path: openshift-servicemesh/v3-cni-instance/overlays/default
+
   openshift-servicemesh-instance:
     annotations:
       argocd.argoproj.io/sync-wave: "9"

@@ -250,7 +250,7 @@ applications:
     annotations:
       argocd.argoproj.io/sync-wave: "9"
     destination:
-      namespace: openshift-operators
+      namespace: istio-system
     source:
       repoURL: https://github.com/tim-stasse/gitops-catalog
       path: openshift-servicemesh/v3-instance/overlays/default

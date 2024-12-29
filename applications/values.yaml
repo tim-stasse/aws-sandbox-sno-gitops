@@ -251,6 +251,20 @@ applications:
       repoURL: https://github.com/tim-stasse/gitops-catalog
       path: redhat-connectivity-link/operator/overlays/stable
 
+  rhcl-config:
+    annotations:
+      argocd.argoproj.io/sync-wave: "11"
+    destination:
+      namespace: api-gateway
+    source:
+      path: rhcl-config/overlays/default
+    extraFields: |
+      ignoreDifferences:
+        - group: gateway.networking.k8s.io
+          kind: Gateway
+          jqPathExpressions:
+            - .spec.listeners
+
   openshift-config:
     annotations:
       argocd.argoproj.io/sync-wave: "11"

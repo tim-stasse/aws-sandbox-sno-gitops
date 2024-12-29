@@ -1,0 +1,16 @@
+apiVersion: kuadrant.io/v1
+kind: AuthPolicy
+metadata:
+  name: external-auth
+  namespace: api-gateway
+spec:
+  targetRef:
+    group: gateway.networking.k8s.io
+    kind: Gateway
+    name: external
+  defaults:
+    rules:
+      authorization:
+        "deny":
+          opa:
+            rego: "allow = false"

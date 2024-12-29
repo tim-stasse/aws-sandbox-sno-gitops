@@ -1,0 +1,36 @@
+apiVersion: redhatcop.redhat.io/v1alpha1
+kind: Patch
+metadata:
+  name: rhcl-config-patches
+  namespace: api-gateway
+spec:
+  serviceAccountRef:
+    name: default
+  patches:
+    external-gateway:
+      targetObjectRef:
+        apiVersion: gateway.networking.k8s.io/v1
+        kind: Gateway
+        name: external
+        namespace: api-gateway
+      sourceObjectRefs:
+        - apiVersion: config.openshift.io/v1
+          kind: DNS
+          name: cluster
+      patchTemplate: |
+        spec:
+          listeners:
+            - allowedRoutes:
+                namespaces:
+                  from: Same
+              hostname: '*.{{ (index . 1).spec.baseDomain }}'
+              name: api
+              port: 443
+              protocol: HTTPS
+              tls:
+                certificateRefs:
+                  - group: ''
+                    kind: Secret
+                    name: api-external-tls
+                mode: Terminate
+      patchType: application/merge-patch+json

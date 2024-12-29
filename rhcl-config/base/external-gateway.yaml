@@ -1,0 +1,10 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: external
+  namespace: api-gateway
+  labels:
+    kuadrant.io/gateway: "true"
+spec:
+  gatewayClassName: istio
+  listeners: []

@@ -160,28 +160,6 @@ applications:
           jqPathExpressions:
             - .spec.hostname
 
-  openshift-config:
-    annotations:
-      argocd.argoproj.io/sync-wave: "6"
-    destination:
-      namespace: openshift-config
-    source:
-      path: openshift-config/overlays/default
-    extraFields: |
-      ignoreDifferences:
-        - group: cert-manager.io
-          kind: Certificate
-          jqPathExpressions:
-            - .spec | (.commonName, .dnsNames[])
-        - group: config.openshift.io
-          kind: APIServer
-          jqPathExpressions:
-            - .spec.servingCerts.namedCertificates[]
-        - group: config.openshift.io
-          kind: OAuth
-          jqPathExpressions:
-            - .spec.identityProviders
-
   crossplane-provider-config:
     annotations:
       argocd.argoproj.io/sync-wave: "7"
@@ -272,3 +250,25 @@ applications:
     source:
       repoURL: https://github.com/tim-stasse/gitops-catalog
       path: redhat-connectivity-link/operator/overlays/stable
+
+  openshift-config:
+    annotations:
+      argocd.argoproj.io/sync-wave: "11"
+    destination:
+      namespace: openshift-config
+    source:
+      path: openshift-config/overlays/default
+    extraFields: |
+      ignoreDifferences:
+        - group: cert-manager.io
+          kind: Certificate
+          jqPathExpressions:
+            - .spec | (.commonName, .dnsNames[])
+        - group: config.openshift.io
+          kind: APIServer
+          jqPathExpressions:
+            - .spec.servingCerts.namedCertificates[]
+        - group: config.openshift.io
+          kind: OAuth
+          jqPathExpressions:
+            - .spec.identityProviders

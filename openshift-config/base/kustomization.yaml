@@ -11,5 +11,6 @@ resources:
   - cluster-api-certificate.yaml
   - api-server.yaml
   - oauth.yaml
+  - console.yaml
   - patches-rbac.yaml
   - patches.yaml

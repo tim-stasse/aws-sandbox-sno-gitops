@@ -7,4 +7,17 @@ metadata:
     kuadrant.io/gateway: "true"
 spec:
   gatewayClassName: istio
-  listeners: []
+  listeners:
+    - allowedRoutes:
+        namespaces:
+          from: Same
+      hostname: << hostname >>
+      name: api
+      port: 443
+      protocol: HTTPS
+      tls:
+        certificateRefs:
+          - group: ""
+            kind: Secret
+            name: api-external-tls
+        mode: Terminate

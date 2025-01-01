@@ -8,4 +8,5 @@ resources:
   - external-auth-policy.yaml
   - external-rate-limit-policy.yaml
   - external-dns-policy.yaml
+  - patches-rbac.yaml
   - patches.yaml

@@ -11,7 +11,7 @@ spec:
     - allowedRoutes:
         namespaces:
           from: Same
-      hostname: << hostname >>
+      hostname: "*.example.com"
       name: api
       port: 443
       protocol: HTTPS

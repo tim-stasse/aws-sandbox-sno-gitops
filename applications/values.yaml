@@ -41,7 +41,6 @@ applications:
     destination:
       namespace: patch-operator
     source:
-      repoURL: https://github.com/tim-stasse/gitops-catalog
       path: patch-operator/operator/overlays/alpha
 
   patch-operator-config:

@@ -10,6 +10,7 @@ helmCharts:
   - name: postgresql
     repo: oci://registry-1.docker.io/bitnamicharts
     releaseName: golem-postgres
+    namespace: golem
     valuesInline:
       auth.database: golem_db
       auth.username: golem_user
@@ -17,5 +18,6 @@ helmCharts:
   - name: redis
     repo: oci://registry-1.docker.io/bitnamicharts
     releaseName: golem-redis
+    namespace: golem
     valuesInline:
       auth.enabled: "true"

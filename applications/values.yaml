@@ -264,9 +264,17 @@ applications:
           jqPathExpressions:
             - .spec.listeners
 
+  golem:
+    annotations:
+      argocd.argoproj.io/sync-wave: "12"
+    destination:
+      namespace: golem
+    source:
+      path: golem/overlays/default
+
   openshift-config:
     annotations:
-      argocd.argoproj.io/sync-wave: "11"
+      argocd.argoproj.io/sync-wave: "12"
     destination:
       namespace: openshift-config
     source:

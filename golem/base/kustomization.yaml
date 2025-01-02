@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - github.com/tim-stasse/gitops-catalog/golem/overlays/latest?ref=main
+
+helmCharts:
+  - name: postgresql
+    repo: oci://registry-1.docker.io/bitnamicharts
+    releaseName: golem-postgres
+    valuesInline:
+      auth.database: golem_db
+      auth.username: golem_user
+
+  - name: redis
+    repo: oci://registry-1.docker.io/bitnamicharts
+    releaseName: golem-redis
+    valuesInline:
+      auth.enabled: "true"

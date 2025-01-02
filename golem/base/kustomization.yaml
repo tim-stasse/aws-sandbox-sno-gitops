@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - namespace.yaml
+  - service-account.yaml
   - github.com/tim-stasse/gitops-catalog/golem/overlays/latest?ref=main
 
 helmCharts:

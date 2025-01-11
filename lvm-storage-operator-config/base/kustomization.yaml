@@ -3,24 +3,3 @@ kind: Kustomization
 
 resources:
   - lvm-cluster.yaml
-
-patches:
-  - target:
-      kind: StorageClass
-      name: gp2-csi
-    patch: |
-      - op: remove
-        path: /metadata/annotations/storageclass.kubernetes.io~1is-default-class
-  - target:
-      kind: StorageClass
-      name: gp3-csi
-    patch: |
-      - op: remove
-        path: /metadata/annotations/storageclass.kubernetes.io~1is-default-class
-  - target:
-      kind: StorageClass
-      name: lvms-vgsno
-    patch: |
-      - op: add
-        path: /metadata/annotations/storageclass.kubernetes.io~1is-default-class
-        value: 'true'

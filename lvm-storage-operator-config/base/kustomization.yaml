@@ -3,3 +3,4 @@ kind: Kustomization
 
 resources:
   - lvm-cluster.yaml
+  - storage-classes.yaml

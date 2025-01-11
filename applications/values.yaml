@@ -27,6 +27,15 @@ projects:
         kind: '*'
 
 applications:
+  lvm-storage-operator:
+    annotations:
+      argocd.argoproj.io/sync-wave: "1"
+    destination:
+      namespace: openshift-storage
+    source:
+      repoURL: https://github.com/tim-stasse/gitops-catalog
+      path: lvm-storage/operator/overlays/stable-4.17
+
   ack-system:
     annotations:
       argocd.argoproj.io/sync-wave: "1"

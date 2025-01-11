@@ -52,6 +52,14 @@ applications:
     source:
       path: patch-operator/operator/overlays/alpha
 
+  lvm-storage-operator-config:
+    annotations:
+      argocd.argoproj.io/sync-wave: "2"
+    destination:
+      namespace: openshift-storage
+    source:
+      path: lvm-storage-operator-config/overlays/default
+
   patch-operator-config:
     annotations:
       argocd.argoproj.io/sync-wave: "2"
